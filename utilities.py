@@ -2,7 +2,7 @@
 
 def accessGrant(allowed_user, edited_number):
     for user in allowed_user:
-        if edited_number == user['telefono']:
+        if edited_number == user['numero']:
             return True
         
     return False
@@ -21,12 +21,12 @@ def getMessage(message):
         return {"text": "",
                 "type": message.get('type')}
 
+
 def getData(allowed_user, edited_number):
-    data = []
     for user in allowed_user:
-        if edited_number == user['telefono']:
-            data.append({"Nombre": user['nombre'],
-                         "Fase": user['fase']})
-            return data
+        if edited_number == user['numero']:
+            return {"id": user['id'],
+                    "Nombre": user['nombre'],
+                    "Fase": user['fase']}
         
     return None

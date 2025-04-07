@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import os
 from dotenv import load_dotenv
 from createMenu import *
-from readDatabase import *
+from manageDatabase import *
 from messagesAPI import *
 from utilities import *
 from backMenu import *
@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 WEBHOOK_VERIFY_TOKEN = os.getenv('WEBHOOK_VERIFY_TOKEN')
 GRAPH_API_TOKEN = os.getenv('GRAPH_API_TOKEN')
-PORT = os.getenv('PORT') # Usa 5000 como valor por defecto si PORT no esta definido.
+PORT = os.getenv('PORT')
 GRAPH_API_VERSION = "v22.0"
 DB_HOST = os.getenv('DB_HOST')
 DB_PORT = os.getenv('DB_PORT')
@@ -48,7 +48,7 @@ def webhook_post():
                                          DB_NAME, 
                                          DB_USER, 
                                          DB_PASSWORD, 
-                                         "UsersAdm")
+                                         "usersadm")
  
             if accessGrant(allowed_user, edited_number):
                 message_text = getMessage(message)
@@ -61,13 +61,21 @@ def webhook_post():
                                             DB_PASSWORD, 
                                             "weed")
                 
-                selectMenuOption(GRAPH_API_TOKEN,
-                                 GRAPH_API_VERSION,
+                user = selectMenuOption(GRAPH_API_VERSION,
+                                 GRAPH_API_TOKEN,
                                  inventario,
                                  user,
                                  message_text,
                                  edited_number,
                                  business_phone_number_id,)
+
+                update_database(DB_HOST,
+                                DB_PORT,
+                                DB_NAME,
+                                DB_USER,
+                                DB_PASSWORD,
+                                "usersadm",
+                                user)
                 
     return jsonify({"status": "success"}), 200
 

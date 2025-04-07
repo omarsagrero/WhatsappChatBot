@@ -18,6 +18,7 @@ def phase1():
             "\n4. OTROS"
     return FASE1
 
+
 def phase2():
     FASE2 = "¿Qué tipo de weed buscas" \
             "\n1. SATIVA" \
@@ -34,12 +35,14 @@ def phase2A1(inventario):
             FASE2A1 += "\n" + str(i['id']) + ". " + i['producto']
     return FASE2A1
 
+
 def phase2A2(inventario):
     FASE2A2 = "¿Qué cepa quieres?"
     for i in inventario:
         if i['tipo'] == 'Índica':
             FASE2A2 += "\n" + str(i['id']) + ". " + i['producto']
     return FASE2A2
+
 
 def phase2A3(inventario):
     FASE2A3 = "¿Qué cepa quieres?"
@@ -48,13 +51,17 @@ def phase2A3(inventario):
             FASE2A3 += "\n" + str(i['id']) + ". " + i['producto']
     return FASE2A3
 
+
 def phase3():
     FASE3 = "¿Cuántas oz quieres?"
     return FASE3
 
+
 def phase4():
     FASE4 = "Mandanos tu ubicación"
     return FASE4
+
+
 def phase5():
     FASE5 = "Tu pedido está en camino, gracias por tu compra"
     return FASE5
