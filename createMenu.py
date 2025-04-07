@@ -18,13 +18,14 @@ def phase1():
             "\n4. OTROS"
     return FASE1
 
-def phase2A():
-    FASE2A = "¿Qué tipo de weed buscas" \
+def phase2():
+    FASE2 = "¿Qué tipo de weed buscas" \
             "\n1. SATIVA" \
             "\n2. INDICA" \
             "\n3. HÍBRIDA" \
             "\n4. REGRESAR" 
-    return FASE2A
+    return FASE2
+
 
 def phase2A1(inventario):
     FASE2A1 = "¿Qué cepa quieres?"
